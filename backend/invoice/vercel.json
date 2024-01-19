@@ -4,7 +4,7 @@
     {
       "src": "invoice/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.6" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.x" }
     },
     {
       "src": "build_files.sh",
