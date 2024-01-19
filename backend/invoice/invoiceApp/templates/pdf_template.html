@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Beautiful Invoice</title>
+    {% load static %}
+   <style>
+  @page {
+    size: letter portrait;
+    margin: 20pt 20pt 20pt 20pt;
+  }
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  a {
+    color: #3498db; /* Updated link color to a shade of blue */
+    text-decoration: underline;
+  }
+
+  body {
+    position: relative;
+    margin: 0 auto;
+    color: #333; /* Updated text color to a dark gray */
+    background: #f8f8f8; /* Updated background color to a light gray */
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-family: Arial;
+  }
+
+  header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+  }
+
+  #logo {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  #logo img {
+    width: 90px;
+  }
+
+  h1 {
+    border-top: 1px solid #3498db; /* Updated border color to the link color */
+    border-bottom: 1px solid #3498db; /* Updated border color to the link color */
+    color: #3498db; /* Updated heading color to the link color */
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+
+  #project {
+  float: left;
+  width: 40%;
+}
+
+#project span {
+  color: #5D6975;
+  text-align: left;
+  display: inline-block;
+}
+
+#company {
+  float: right;
+  text-align: right;
+
+}
+
+#project div,
+#company div {
+  white-space: wrap;
+}
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+
+  table tr:nth-child(2n-1) td {
+    background: #ecf0f1; /* Updated alternating row color to a lighter shade */
+  }
+
+  table th,
+  table td {
+    text-align: center; /* Aligning text to the right */
+  }
+
+  table th {
+    padding: 10px 20px;
+    color: #3498db; /* Updated heading color to the link color */
+    border-bottom: 1px solid #bdc3c7; /* Updated border color to a light gray */
+    white-space: nowrap;
+    font-weight: normal;
+  }
+
+  table.service,
+  table.desc {
+    text-align: center;
+  }
+
+  table td {
+    padding: 5px; /* Adjusted padding for better spacing */
+  }
+
+  table td.service,
+  table td.desc {
+    vertical-align: top;
+  }
+
+  table td.unit,
+  table td.qty,
+  table td.total {
+    font-size: 1.2em;
+  }
+
+  table td.grand {
+border-top: 1px solid #3498db; /* Updated border color to the link color */
+    border-bottom: 1px solid #3498db; /* Updated border color to the link color */
+    color: #3498db; /* Updated text color to the link color */
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+
+  }
+
+  #notices .notice {
+    color: #5D6975;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+  footer {
+    color: #5D6975;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    border-top: 1px solid #bdc3c7;
+    padding: 8px 0;
+    text-align: center;
+  }
+</style>
+
+
+</head>
+<body>
+<header>
+    <div id="logo" style="margin-bottom: 20px; background-color:#ffffff">
+        <img src="{{company_logo.url}}" alt="Company Logo">
+    </div>
+
+    <h1 style="padding-top:10px">INVOICE {{invoice_number}}</h1>
+</header>
+<main class="clearfix">
+    <table style="background-color: #f0f0f0;">
+        <tbody>
+        <tr>
+            <td style="text-align: left; ">
+                <div id="project">
+                    <table style="padding:0px; text-align:left; margin:0px">
+                    <tr>
+                        <td style="text-align:left;">
+                            <span>BILL TO</span>
+                        </td>
+                        <td style="text-align:left; padding-left:0px;">
+                            {{bill_to|linebreaksbr}}
+                        </td>
+                    </tr>
+                        <tr style="text-align:left;">
+                            <td style="text-align:left;">
+                                <span>DATE</span>
+                            </td>
+                            <td style="text-align:left; padding-left:0px;">
+                                {{invoice_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">
+                                <span>DUE DATE</span>
+                            </td>
+                            <td style="text-align:left; padding-left:0px; margin-left:0px;">
+                                {{due_date}}
+                            </td>
+                        </tr>
+
+                    </table>
+            </div>
+            </td>
+
+            <td style="text-align:right;">
+                <div id="company">
+                <div>{{company_details|linebreaksbr}}</div>
+            </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th class="service">No.</th>
+            <th class="desc">DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in items %}
+        <tr>
+            <td class="service">{{forloop.counter}}</td>
+            <td class="desc">{{obj.description}}</td>
+            <td class="unit">{{obj.unit_cost}}</td>
+            <td class="qty">{{obj.quantity}}</td>
+            <td class="total">{{ obj.total}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" style="background-color: #f0f0f0; color: #5D6975; text-align:right;">SUBTOTAL</td>
+            <td class="total" style="background-color: #f0f0f0; color: #5D6975;">{{subtotal}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="background-color: #f0f0f0; color: #5D6975; text-align: right;">DISCOUNT</td>
+            <td class="total" style="background-color: #f0f0f0; color: #5D6975;">{{discount}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="background-color: #f0f0f0; color: #5D6975; text-align: right;">TAX {{tax}} %</td>
+            <td class="total" style="background-color: #f0f0f0; color: #5D6975;">{{tax_value}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="background-color: #f0f0f0; color: #5D6975; text-align: right;">SHIPPING FEE</td>
+            <td class="total" style="background-color: #f0f0f0; color: #5D6975;">{{shipping_fee}}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="grand total" style="background-color: #f0f0f0; text-align: right;">GRAND TOTAL</td>
+            <td class="grand total" style="background-color: #f0f0f0;">{{ grand_total }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="notices" style="padding:10px;">
+        <div style="color: #5D6975;">NOTES:</div>
+        <div class="notice">{{notes}}</div>
+    </div>
+</main>
+</body>
+</html>

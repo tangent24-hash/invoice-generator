@@ -1,0 +1,50 @@
+/* styles/Footer.module.css */
+
+.footer {
+  position: relative;
+  background-color: #2c3e50; /* Dark Grayish color */
+  padding: 20px 0;
+  color: #ecf0f1; /* Light Grayish text color */
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  margin-bottom: 10px; /* Added margin at the bottom for separation */
+}
+
+.icon {
+  font-size: 24px;
+  color: #ecf0f1; /* Light Grayish icon color */
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #3498db; /* Dodger Blue on hover */
+}
+
+.text {
+  font-size: 0.9rem;
+  margin: 0;
+  margin-top: 10px; /* Added top margin for separation */
+}
+
+.invoiceImageContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  width: 20%; /* Set the width of the image container */
+  overflow: visible;
+}
+
+.invoiceImage {
+  width: 100%;
+  height: 300px;
+}

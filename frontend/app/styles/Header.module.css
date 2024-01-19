@@ -1,0 +1,32 @@
+/* styles/Header.module.css */
+
+.header {
+  background-color: #2c3e50; /* Dark Grayish color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.1); /* Enhanced Shadow effect */
+  padding: 20px;
+  margin-bottom: 20px; /* Added margin at the bottom */
+  border-bottom: 4px solid #2c3e50; /* Darker Grayish border at the bottom */
+}
+
+.container {
+  text-align: center;
+}
+
+.headline {
+  color: #ffffff; /* White text */
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for emphasis */
+}
+
+.tagline {
+  color: #ecf0f1; /* Light Grayish color */
+  margin: 10px 0; /* Adjusted top and bottom margin */
+  font-size: 1rem; /* Slightly smaller font size */
+  opacity: 0.9; /* Slight opacity for a subtle effect */
+  transition: opacity 0.3s ease; /* Smooth transition on hover */
+}
+
+.tagline:hover {
+  opacity: 1;
+}
