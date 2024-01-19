@@ -4,14 +4,13 @@ Welcome to the Invoice Generator Web Application! This application allows users 
 
 ## Screenshots
 
-<!-- Image 1 -->
-<img src="./images/invoice-website.png" alt="Website" width="200" />
+<<div align="center">
+<img src="./images/invoice-website.png" alt="Website" width="200" height="400" />
 
-<!-- Image 2 -->
-<img src="./images/invoice-website1.png" alt="Website" width="200" />
+<img src="./images/invoice-website1.png" alt="Website" width="200" height="400" />
 
-<!-- Image 3 -->
-<img src="./images/sample-invoice1.png" alt="Sample PDF Invoice" width="200" />
+<img src="./images/sample-invoice1.png" alt="Sample PDF Invoice" width="200" height="400" />
+</div>
 
 ## Features
 
