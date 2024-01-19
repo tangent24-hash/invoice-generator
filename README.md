@@ -4,7 +4,7 @@ Welcome to the Invoice Generator Web Application! This application allows users 
 
 ## Screenshots
 
-<<div align="center">
+<div align="center">
 <img src="./images/invoice-website.png" alt="Website" width="100%" />
 
 <img src="./images/invoice-website1.png" alt="Website" width="100%"  />
