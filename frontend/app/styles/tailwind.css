@@ -1,0 +1,33 @@
+/* // styles/tailwind.css */
+
+/* Import Tailwind CSS styles */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom styles */
+body {
+  background: linear-gradient(
+    135deg,
+    #48bb78,
+    #2f855a
+  ); /* Greenish background */
+}
+
+input {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Semi-transparent white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  color: black; /* Text color */
+}
+
+/* Beautiful background image from Unsplash (replace with your preferred image) */
+body {
+  background-image: url("../lib/images/invoice_background_1.jpg"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+}
