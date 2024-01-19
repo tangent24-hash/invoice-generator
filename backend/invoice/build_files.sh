@@ -1,2 +1,2 @@
 pip install -r requirements.txt
-python3.11.6 manage.py collectstatic --no-input --clear
+python3.x manage.py collectstatic --no-input --clear
