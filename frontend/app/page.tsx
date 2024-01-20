@@ -94,15 +94,13 @@ const InvoiceGenerator: React.FC = () => {
   const handleSubmit = async () => {
     try {
       // Submit invoiceForm to "invoices" endpoint
-      const invoiceResponse = await axios.post(
-        process.env.NEXT_PUBLIC_CREATE_INVOICE_URL,
-        invoiceForm,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const createInvoiceUrl =
+        process.env.NEXT_PUBLIC_CREATE_INVOICE_URL ?? "default-url";
+      const invoiceResponse = await axios.post(createInvoiceUrl, invoiceForm, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (invoiceResponse.status === 201) {
         const invoiceId = invoiceResponse.data.id;
@@ -113,13 +111,17 @@ const InvoiceGenerator: React.FC = () => {
             invoice_id: invoiceId,
             ...itemsForms[i],
           };
-          await axios.post(process.env.NEXT_PUBLIC_CREATE_ITEM_URL, itemObject);
+          const createItemUrl =
+            process.env.NEXT_PUBLIC_CREATE_ITEM_URL ?? "default-url";
+          await axios.post(createItemUrl, itemObject);
         }
       }
       if (invoiceResponse.status === 201) {
         try {
+          const generateInvoiceUrl =
+            process.env.NEXT_PUBLIC_GENERATE_INVOICE_URL ?? "default url";
           const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_GENERATE_INVOICE_URL}/?invoice_id=${invoiceResponse.data.id}`,
+            `${generateInvoiceUrl}/?invoice_id=${invoiceResponse.data.id}`,
             {
               responseType: "arraybuffer", // Set the response type to arraybuffer to handle binary data
             }
