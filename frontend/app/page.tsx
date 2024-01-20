@@ -95,7 +95,7 @@ const InvoiceGenerator: React.FC = () => {
     try {
       // Submit invoiceForm to "invoices" endpoint
       const invoiceResponse = await axios.post(
-        process.env.CREATE_INVOICE_URL,
+        process.env.NEXT_PUBLIC_CREATE_INVOICE_URL,
         invoiceForm,
         {
           headers: {
@@ -113,13 +113,13 @@ const InvoiceGenerator: React.FC = () => {
             invoice_id: invoiceId,
             ...itemsForms[i],
           };
-          await axios.post(process.env.CREATE_ITEM_URL, itemObject);
+          await axios.post(process.env.NEXT_PUBLIC_CREATE_ITEM_URL, itemObject);
         }
       }
       if (invoiceResponse.status === 201) {
         try {
           const response = await axios.get(
-            `${process.env.GENERATE_INVOICE_URL}/?invoice_id=${invoiceResponse.data.id}`,
+            `${process.env.NEXT_PUBLIC_GENERATE_INVOICE_URL}/?invoice_id=${invoiceResponse.data.id}`,
             {
               responseType: "arraybuffer", // Set the response type to arraybuffer to handle binary data
             }
