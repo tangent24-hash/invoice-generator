@@ -95,7 +95,7 @@ const InvoiceGenerator: React.FC = () => {
     try {
       // Submit invoiceForm to "invoices" endpoint
       const invoiceResponse = await axios.post(
-        `${process.env.CREATE_INVOICE_URL}`,
+        process.env.CREATE_INVOICE_URL,
         invoiceForm,
         {
           headers: {
@@ -113,7 +113,7 @@ const InvoiceGenerator: React.FC = () => {
             invoice_id: invoiceId,
             ...itemsForms[i],
           };
-          await axios.post(`${process.env.CREATE_ITEM_URL}`, itemObject);
+          await axios.post(process.env.CREATE_ITEM_URL, itemObject);
         }
       }
       if (invoiceResponse.status === 201) {
